@@ -14,6 +14,7 @@ pipeUp.src = "img/pipeUp.png"
 pipeBottom.src = "img/pipeBottom.png"
 
 var gap = 90;
+var score = 0;
 
 document.addEventListener("keydown", moveUp);
 function moveUp() {
@@ -49,19 +50,27 @@ function draw() {
     }
 
     //collision bird with block
-    if (xPos + bird.width >= pipe[i].x
-    	&& xPos <= pipe[i].x + pipeUp.width
-    	&& (yPos <=pipe[i].y + pipeUp.height
-    		|| yPos + bird.height >= pipe[i].y + pipeUp.height +
-    		gap) || yPos + bird.height >= canvas.height - fg.height) {
-              location.reload(); // Reload page
-            }
+    if(xPos + bird.width >= pipe[i].x
+      && xPos <= pipe[i].x + pipeUp.width
+      && (yPos <=pipe[i].y + pipeUp.height
+    	|| yPos + bird.height >= pipe[i].y + pipeUp.height +
+    	gap) || yPos + bird.height >= canvas.height - fg.height) {
+          location.reload(); // Reload page
+        }
+    if(pipe[i].x == 5) {
+      score++;
+    }    
   }
   
   context.drawImage(fg, 0, canvas.height - fg.height);
   context.drawImage(bird, xPos, yPos);
 
   yPos += grav;
+
+  context.fillStyle = "#000";
+  context.font = "24px Verdana";
+  context.fillText("Score: " + score, 10,canvas.height - 20);
+
   requestAnimationFrame(draw);
 }
 
