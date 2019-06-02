@@ -1,6 +1,7 @@
 var canvas = document.getElementById("canvas");
 var context = canvas.getContext("2d");
 
+// Image files
 var bird = new Image();
 var bg = new Image();
 var fg = new Image();
@@ -13,6 +14,7 @@ fg.src = "img/fg.png"
 pipeUp.src = "img/pipeUp.png"
 pipeBottom.src = "img/pipeBottom.png"
 
+// Sounds files
 var fly = new Audio();
 var score_audio = new Audio();
 
@@ -22,17 +24,20 @@ score_audio.src = "audio/score.mp3";
 var gap = 90;
 var score = 0;
 
+// While pressing any key
 document.addEventListener("keydown", moveUp);
 function moveUp() {
   yPos -=25;
   fly.play();	
 }
 
+// Create new blocks
 var pipe = [];
 pipe[0] = {
   x : canvas.width,
   y : 0	
 }
+
 // Position the bird
 var xPos = 10;
 var yPos = 150;
