@@ -13,12 +13,19 @@ fg.src = "img/fg.png"
 pipeUp.src = "img/pipeUp.png"
 pipeBottom.src = "img/pipeBottom.png"
 
+var fly = new Audio();
+var score_audio = new Audio();
+
+fly.src = "audio/fly.mp3";
+score_audio.src = "audio/score.mp3";
+
 var gap = 90;
 var score = 0;
 
 document.addEventListener("keydown", moveUp);
 function moveUp() {
-  yPos -=25;	
+  yPos -=25;
+  fly.play();	
 }
 
 var pipe = [];
@@ -59,6 +66,7 @@ function draw() {
         }
     if(pipe[i].x == 5) {
       score++;
+      score_audio.play();
     }    
   }
   
