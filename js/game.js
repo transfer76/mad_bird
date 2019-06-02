@@ -8,11 +8,11 @@ var fg = new Image();
 var pipeUp = new Image();
 var pipeBottom = new Image();
 
-bird.src = "img/bird.png"
-bg.src = "img/bg.png"
-fg.src = "img/fg.png"
-pipeUp.src = "img/pipeUp.png"
-pipeBottom.src = "img/pipeBottom.png"
+bird.src = "img/bird.png";
+bg.src = "img/bg.png";
+fg.src = "img/fg.png";
+pipeUp.src = "img/pipeUp.png";
+pipeBottom.src = "img/pipeBottom.png";
 
 // Sounds files
 var fly = new Audio();
@@ -21,7 +21,7 @@ var score_audio = new Audio();
 fly.src = "audio/fly.mp3";
 score_audio.src = "audio/score.mp3";
 
-var gap = 90;
+var gap = 100;
 var score = 0;
 
 // While pressing any key
@@ -36,7 +36,7 @@ var pipe = [];
 pipe[0] = {
   x : canvas.width,
   y : 0	
-}
+};
 
 // Position the bird
 var xPos = 10;
@@ -64,11 +64,12 @@ function draw() {
     //collision bird with block
     if(xPos + bird.width >= pipe[i].x
       && xPos <= pipe[i].x + pipeUp.width
-      && (yPos <=pipe[i].y + pipeUp.height
+      && (yPos <= pipe[i].y + pipeUp.height
     	|| yPos + bird.height >= pipe[i].y + pipeUp.height +
     	gap) || yPos + bird.height >= canvas.height - fg.height) {
           location.reload(); // Reload page
         }
+
     if(pipe[i].x == 5) {
       score++;
       score_audio.play();
